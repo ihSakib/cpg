@@ -93,7 +93,7 @@ function PdfContent() {
           style={{
             fontSize: "1.2rem",
             marginBottom: "16px",
-            marginTop: "10px",
+            marginTop: "0px",
           }}
         >
           {department}
