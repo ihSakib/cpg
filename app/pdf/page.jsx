@@ -82,7 +82,7 @@ function PdfContent() {
         <h2
           className="text-3xl font-bold mb-4"
           style={{
-            fontSize: "1.5rem",
+            fontSize: "1.8rem",
             fontWeight: "700",
             margin: "0",
           }}
@@ -91,12 +91,13 @@ function PdfContent() {
         </h2>
         <h4
           style={{
-            fontSize: "1.2rem",
+            fontSize: "1.3rem",
             marginBottom: "16px",
             marginTop: "0px",
+            color: "#80807F",
           }}
         >
-          {department}
+          Department of {department}
         </h4>
         <img
           src="/logo.jpg"
