@@ -1,10 +1,18 @@
 "use client";
-
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRef } from "react";
-import html2pdf from "html2pdf.js";
+// import html2pdf from "html2pdf.js";
 
 export default function PdfPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PdfContent />
+    </Suspense>
+  );
+}
+
+function PdfContent() {
   const searchParams = useSearchParams(); // Access query parameters
 
   const formatDate = (dateString) => {
@@ -42,7 +50,7 @@ export default function PdfPage() {
       html2canvas: { scale: 2 },
       jsPDF: { unit: "mm", format: "A4", orientation: "portrait" },
     };
-    html2pdf().set(opt).from(input).save();
+    // html2pdf().set(opt).from(input).save();
   };
 
   return (
@@ -74,7 +82,13 @@ export default function PdfPage() {
         >
           Chandpur Science and Technology University
         </h2>
-        <h4 style={{ fontSize: "1.2rem", marginBottom: "16px", marginTop:"10px" }}>
+        <h4
+          style={{
+            fontSize: "1.2rem",
+            marginBottom: "16px",
+            marginTop: "10px",
+          }}
+        >
           {department}
         </h4>
         <img
