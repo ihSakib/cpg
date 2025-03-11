@@ -52,7 +52,7 @@ function PdfContent() {
 
     var opt = {
       margin: 1,
-      filename: "cp_" + cc + "_" + randomCode,
+      filename: "CP_" + cc + "_" + randomCode,
       image: { type: "jpeg", quality: 1 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: "mm", format: "A4", orientation: "portrait" },
