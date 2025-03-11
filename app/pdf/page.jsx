@@ -1,8 +1,7 @@
 "use client";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRef } from "react";
-// import html2pdf from "html2pdf.js";
 
 export default function PdfPage() {
   return (
@@ -14,6 +13,13 @@ export default function PdfPage() {
 
 function PdfContent() {
   const searchParams = useSearchParams(); // Access query parameters
+  const [html2pdf, setHtml2pdf] = useState(null);
+
+  useEffect(() => {
+    import("html2pdf.js").then((module) => {
+      setHtml2pdf(() => module.default);
+    });
+  }, []);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -39,6 +45,7 @@ function PdfContent() {
 
   // Function to generate the PDF
   const generatePDF = () => {
+    if (!html2pdf) return;
     const input = pdfContentRef.current;
     const cc = courseCode.split(" ").join("_");
     const randomCode = Math.floor(1000 + Math.random() * 9000);
@@ -50,7 +57,7 @@ function PdfContent() {
       html2canvas: { scale: 2 },
       jsPDF: { unit: "mm", format: "A4", orientation: "portrait" },
     };
-    // html2pdf().set(opt).from(input).save();
+    html2pdf().set(opt).from(input).save();
   };
 
   return (
