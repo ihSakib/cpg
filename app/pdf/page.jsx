@@ -53,7 +53,7 @@ function PdfContent() {
     const randomCode = Math.floor(1000 + Math.random() * 9000);
 
     var opt = {
-      margin: 1,
+      margin: 0,
       filename: "CP_" + cc + "_" + randomCode,
       image: { type: "jpeg", quality: 1 },
       html2canvas: { scale: 2 },
