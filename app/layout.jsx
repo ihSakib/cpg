@@ -1,4 +1,4 @@
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 export const metadata = {
@@ -8,6 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head></head>
       <body>{children}</body>
     </html>
   );

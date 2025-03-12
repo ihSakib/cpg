@@ -27,7 +27,6 @@ export default function CoverPageForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
 
     // Generate a dynamic URL based on form data
     const {
