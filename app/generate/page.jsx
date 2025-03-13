@@ -57,9 +57,8 @@ export default function CoverPageForm() {
       router.push(
         `/download?studentName=${studentName}&studentID=${studentID}&department=${department}&session=${session}&courseName=${courseName}&courseCode=${courseCode}&teacherName=${teacherName}&teacherDesignation=${teacherDesignation}&coverPageType=${coverPageType}&serialNumber=${serialNumber}&coverPageTitle=${coverPageTitle}&submissionDate=${submissionDate}&teacherDept=${teacherDept}&teacherUni=${teacherUni}`
       );
-    }, 1500);
-
-    setIsClicked(false);
+      setIsClicked(false);
+    }, 2000);
   };
 
   return (
