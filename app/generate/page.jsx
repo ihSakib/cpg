@@ -57,7 +57,7 @@ export default function CoverPageForm() {
       router.push(
         `/download?studentName=${studentName}&studentID=${studentID}&department=${department}&session=${session}&courseName=${courseName}&courseCode=${courseCode}&teacherName=${teacherName}&teacherDesignation=${teacherDesignation}&coverPageType=${coverPageType}&serialNumber=${serialNumber}&coverPageTitle=${coverPageTitle}&submissionDate=${submissionDate}&teacherDept=${teacherDept}&teacherUni=${teacherUni}`
       );
-    }, 1000);
+    }, 1500);
 
     setIsClicked(false);
   };
@@ -67,7 +67,7 @@ export default function CoverPageForm() {
       <form onSubmit={handleSubmit} className="bg-white  w-full max-w-2xl  ">
         {/* Student Information */}
         <div className="mb-6 mt-4 md:mt-6">
-          <h3 className="text-lg md:text-xl font-semibold text-gray-700 mb-2">
+          <h3 className="text-lg underline md:text-xl font-semibold text-gray-700 mb-3">
             Student Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -135,7 +135,7 @@ export default function CoverPageForm() {
 
         {/* Course Information */}
         <div className="mb-6">
-          <h3 className="text-lg md:text-xl font-semibold text-gray-700 mb-2">
+          <h3 className="text-lg underline md:text-xl font-semibold text-gray-700 mb-3">
             Course Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -227,7 +227,7 @@ export default function CoverPageForm() {
 
         {/* Cover Page Information */}
         <div className="mb-6">
-          <h3 className="text-lg md:text-xl font-semibold text-gray-700 mb-2">
+          <h3 className="text-lg underline md:text-xl font-semibold text-gray-700 mb-3">
             Cover Page Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

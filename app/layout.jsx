@@ -48,8 +48,8 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="flex flex-col min-h-svh">
-        <header className="bg-white shadow">
-          <nav className="container mx-auto px-6 py-3 md:px-4 md:py-4 flex justify-between items-center">
+        <header className="bg-white border-b border-neutral-200">
+          <nav className=" mx-auto px-6 py-3 md:px-10 lg:px-20 flex justify-between items-center">
             {/**website logo */}
             <Link href="/">
               {" "}
@@ -61,10 +61,18 @@ export default function RootLayout({ children }) {
             </Link>
 
             {/***desktop menu*/}
-            <ul className="space-x-6 hidden sm:flex">
+            <ul className="space-x-6  hidden sm:flex">
               <li>
                 <Link href="/" className="text-blue-500 hover:text-blue-700">
                   Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/generate"
+                  className="text-blue-500 hover:text-blue-700"
+                >
+                  Generate
                 </Link>
               </li>
               <li>
@@ -110,6 +118,14 @@ export default function RootLayout({ children }) {
               >
                 <Link className="p-4 pl-6 w-full block" href="/">
                   Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/generate"
+                  className="text-blue-500 hover:text-blue-700"
+                >
+                  Generate
                 </Link>
               </li>
               <li
