@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cover Page Generator
 
-## Getting Started
+## 📄 About
 
-First, run the development server:
+The **CPG** is a web application designed for students at **Chandpur Science and Technology University (CSTU)**. It allows students to quickly generate formatted cover pages for **lab reports, assignments, projects, and more** by filling out a simple form.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 📌 **Easy-to-use form** to input student details, course information, and cover page details.
+- 🎓 **Auto-generate cover pages** with proper formatting.
+- 📄 **Downloadable PDF** output for convenience.
+- 🎨 **Clean and professional design** suitable for academic use.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🛠️ Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Frontend:** Next.js, Tailwind CSS
+- **PDF Generation:** html2pdf.js
+- **Backend:** Node.js (if needed)
+- **Hosting:** Vercel (for frontend)
 
-## Learn More
+## 📌 How to Use
 
-To learn more about Next.js, take a look at the following resources:
+1. **Visit the website** and navigate to the cover page generator.
+2. **Fill out the form** with student, course, and cover page information.
+3. **Preview the generated cover page** to ensure all details are correct.
+4. **Download the cover page as a PDF** using **html2pdf.js** and attach it to your assignment!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💡 Future Enhancements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 🖼️ Support for **custom templates**.
+- 🔄 Integration with **university database** for auto-fetching course details.
 
-## Deploy on Vercel
+## 📞 Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you have any suggestions or issues, feel free to reach out:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Developer:** Iftekhar Hossain
+- **Email:** [ihsakib.dev@gmail.com](ihsakib.dev@gmail.com)
+- **Website:** [ihsakib.netlify.com](https://ihsakib.netlify.app/)
+
+---
+
+🚀 _Built with dedication for CSTU students to make academic work easier!_
