@@ -58,6 +58,8 @@ export default function CoverPageForm() {
         `/download?studentName=${studentName}&studentID=${studentID}&department=${department}&session=${session}&courseName=${courseName}&courseCode=${courseCode}&teacherName=${teacherName}&teacherDesignation=${teacherDesignation}&coverPageType=${coverPageType}&serialNumber=${serialNumber}&coverPageTitle=${coverPageTitle}&submissionDate=${submissionDate}&teacherDept=${teacherDept}&teacherUni=${teacherUni}`
       );
     }, 1000);
+
+    setIsClicked(false);
   };
 
   return (
@@ -66,7 +68,7 @@ export default function CoverPageForm() {
         {/* Student Information */}
         <div className="mb-6 mt-4 md:mt-6">
           <h3 className="text-lg md:text-xl font-semibold text-gray-700 mb-2">
-            Student Information 
+            Student Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -134,7 +136,7 @@ export default function CoverPageForm() {
         {/* Course Information */}
         <div className="mb-6">
           <h3 className="text-lg md:text-xl font-semibold text-gray-700 mb-2">
-            Course Information 
+            Course Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -226,7 +228,7 @@ export default function CoverPageForm() {
         {/* Cover Page Information */}
         <div className="mb-6">
           <h3 className="text-lg md:text-xl font-semibold text-gray-700 mb-2">
-            Cover Page Information 
+            Cover Page Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
