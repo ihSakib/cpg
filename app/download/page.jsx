@@ -1,11 +1,10 @@
 "use client";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { useRef } from "react";
 
 export default function PdfPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="p-10">Loading...</div>}>
       <PdfContent />
     </Suspense>
   );
@@ -15,15 +14,9 @@ function PdfContent() {
   const searchParams = useSearchParams(); // Access query parameters
   const [html2pdf, setHtml2pdf] = useState(null);
 
-  useEffect(() => {
-    import("html2pdf.js").then((module) => {
-      setHtml2pdf(() => module.default);
-    });
-  }, []);
-
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return new Intl.DateTimeFormat("en-GB").format(date); // 'en-GB' gives DD/MM/YYYY format
+    return new Intl.DateTimeFormat("en-GB").format(date);
   };
 
   // Destructure form data from the searchParams
@@ -35,19 +28,30 @@ function PdfContent() {
   const courseCode = searchParams.get("courseCode");
   const teacherName = searchParams.get("teacherName");
   const teacherDesignation = searchParams.get("teacherDesignation");
+  const teacherDept = searchParams.get("teacherDept");
+  const teacherUni = searchParams.get("teacherUni");
   const coverPageType = searchParams.get("coverPageType");
   const serialNumber = searchParams.get("serialNumber");
   const coverPageTitle = searchParams.get("coverPageTitle");
   const submissionDate = formatDate(searchParams.get("submissionDate"));
 
+  useEffect(() => {
+    import("html2pdf.js").then((module) => {
+      setHtml2pdf(() => module.default);
+    });
+  }, []);
+
   // Reference for the container to be converted to PDF
   const pdfContentRef = useRef();
-  const td1 = teacherDesignation.split(",").at(0) + ",";
-  const td2 = teacherDesignation.split(",").slice(1).join(",").trim();
 
   // Function to generate the PDF
   const generatePDF = () => {
-    if (!html2pdf) return;
+    if (!html2pdf) {
+      console.error("html2pdf is not loaded yet");
+      return;
+    }
+
+    console.log("Generating PDF");
     const input = pdfContentRef.current;
     const cc = courseCode.split(" ").join("_");
     const randomCode = Math.floor(1000 + Math.random() * 9000);
@@ -191,9 +195,9 @@ function PdfContent() {
                 <strong>Name:</strong> {teacherName}
               </p>
               <p style={{ margin: 0 }}>
-                <strong>Designation:</strong> {td1}
+                <strong>Designation:</strong> {teacherDesignation},
                 <br />
-                {td2}
+                {teacherDept}, {teacherUni}
               </p>
             </div>
           </div>
@@ -203,37 +207,27 @@ function PdfContent() {
         </div>
       </div>
 
-      <div style={{ position: "fixed", top: "4rem", right: "4rem" }}>
+      <div className="fixed top-32 right-32">
         <button
           onClick={generatePDF}
-          style={{
-            padding: "10px 20px",
-            borderRadius: "5px",
-            fontSize: "16px",
-            cursor: "pointer",
-            outline: "none",
-            backgroundColor: "orange",
-          }}
+          className="px-5 py-2.5 rounded-md text-lg cursor-pointer outline-none bg-[#FFA500] hover:bg-[#FF8C00] text-white flex items-center"
         >
-          Download PDF
+          <i className="fas fa-download mr-2"></i>
+          Download
         </button>
       </div>
 
-      <div className="md:hidden fixed inset-0  bg-white p-10">
+      {/***mobile view */}
+      <div className="md:hidden fixed top-32 left-4  bg-slate-300 p-10">
         <p>Your Cover Page is Ready!</p>
         <p className="mb-4">For better view use desktop mode</p>
 
         <button
-          className="bg-neutral-300"
+          type="button"
           onClick={generatePDF}
-          style={{
-            padding: "5px 10px",
-            borderRadius: "2px",
-            fontSize: "12px",
-            cursor: "pointer",
-            outline: "none",
-          }}
+          className="bg-black hover:bg-neutral-600 text-white px-3 py-2 rounded text-xs cursor-pointer outline-none flex items-center"
         >
+          <i className="fas fa-download mr-2"></i>
           Download
         </button>
       </div>
