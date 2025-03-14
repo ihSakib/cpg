@@ -197,7 +197,7 @@ function PdfContent() {
               <p style={{ margin: 0 }}>
                 <strong>Designation:</strong> {teacherDesignation},
                 <br />
-                {teacherDept}, {teacherUni}
+                Dept. of {teacherDept}, {teacherUni}
               </p>
             </div>
           </div>
