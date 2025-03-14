@@ -3,13 +3,13 @@ import Image from "next/image";
 
 const Page = () => {
   return (
-    <div className="flex flex-col items-center px-6 mt-10">
+    <div className="flex flex-col items-center px-6 mt-6">
       {/* About Page Content */}
       <section className="text-center max-w-2xl">
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
           About CPG
         </h1>
-        <p className="md:text-lg text-gray-700 mb-6">
+        <p className="text-base text-gray-700 mb-6">
           Cover Page Generator (CPG) is a tool designed to simplify the process
           of creating cover pages for lab reports, assignments, and projects.
           Generate professional cover pages in seconds!
