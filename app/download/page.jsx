@@ -207,7 +207,7 @@ function PdfContent() {
         </div>
       </div>
 
-      <div className="fixed top-32 right-32">
+      <div className="hidden md:block fixed top-32 right-32">
         <button
           onClick={generatePDF}
           className="px-5 py-2.5 rounded-md text-lg cursor-pointer outline-none bg-[#FFA500] hover:bg-[#FF8C00] text-white flex items-center"
