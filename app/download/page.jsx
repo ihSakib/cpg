@@ -75,13 +75,12 @@ function PdfContent() {
       }}
     >
       {/* Container with the form content */}
-      <div className="border-3 border-[gainsboro] mx-auto w-fit pb-[70px]">
+      <div className="border-3  border-[gainsboro] mx-auto w-fit pb-[70px]">
         <div
           ref={pdfContentRef}
-          className="font-sans text-center"
+          className=" text-center"
           style={{
             width: "8.27in",
-            fontFamily: "sans-serif",
             textAlign: "center",
             paddingInline: "45px",
             paddingTop: "70px",
