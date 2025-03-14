@@ -71,7 +71,7 @@ function PdfContent() {
     <div
       style={{
         paddingBlock: "50px",
-        overflow: "hidden",
+        overflow: "auto",
       }}
     >
       {/* Container with the form content */}
