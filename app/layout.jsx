@@ -120,14 +120,16 @@ export default function RootLayout({ children }) {
                   Home
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/generate"
-                  className="text-blue-500 hover:text-blue-700"
-                >
+
+              <li
+                onClick={toggleMenu}
+                className="  hover:bg-gray-600  border-b border-gray-700"
+              >
+                <Link className="p-4 pl-6 w-full block" href="/generate">
                   Generate
                 </Link>
               </li>
+
               <li
                 onClick={toggleMenu}
                 className="  hover:bg-gray-600 border-b border-gray-700"

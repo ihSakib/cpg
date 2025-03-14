@@ -23,7 +23,7 @@ The **CPG** is a web application designed for students at **Chandpur Science and
 1. **Visit the website** and navigate to the cover page generator.
 2. **Fill out the form** with student, course, and cover page information.
 3. **Preview the generated cover page** to ensure all details are correct.
-4. **Download the cover page as a PDF** using **html2pdf.js** and attach it to your assignment!
+4. **Download the cover page as a PDF** and attach it to your documents!
 
 ## 💡 Future Enhancements
 
