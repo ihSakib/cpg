@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function CoverPageForm() {
@@ -21,12 +21,18 @@ export default function CoverPageForm() {
     submissionDate: "",
   });
 
+  // useEffect(() => {
+  //   const savedData = sessionStorage.getItem("formData");
+  //   if (savedData) setFormData(JSON.parse(savedData));
+  // }, []);
+
   const [isClicked, setIsClicked] = useState(false);
 
   const router = useRouter();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // sessionStorage.setItem("formData", JSON.stringify(formData));
   };
 
   const handleSubmit = (e) => {
@@ -57,18 +63,20 @@ export default function CoverPageForm() {
       router.push(
         `/download?studentName=${studentName}&studentID=${studentID}&department=${department}&session=${session}&courseName=${courseName}&courseCode=${courseCode}&teacherName=${teacherName}&teacherDesignation=${teacherDesignation}&coverPageType=${coverPageType}&serialNumber=${serialNumber}&coverPageTitle=${coverPageTitle}&submissionDate=${submissionDate}&teacherDept=${teacherDept}&teacherUni=${teacherUni}`
       );
-      setIsClicked(false);
+      setTimeout(() => {
+        setIsClicked(false);
+      }, 2000);
     }, 2000);
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen  px-6">
-      <form onSubmit={handleSubmit} className="bg-white  w-full max-w-2xl  ">
+    <div className="flex items-center justify-center min-h-screen px-6">
+      <form onSubmit={handleSubmit} className="bg-white w-full max-w-2xl">
         {/* Student Information */}
-        <div className="mb-6 mt-4 md:mt-6">
-          <h3 className="text-lg underline md:text-xl font-semibold text-gray-700 mb-3">
+        <fieldset className="mb-6 mt-4 md:mt-6 border border-gray-300 p-4 rounded-md">
+          <legend className="text-lg md:text-xl font-semibold text-gray-700 px-2">
             Student Information
-          </h3>
+          </legend>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-600 font-medium">
@@ -83,7 +91,6 @@ export default function CoverPageForm() {
                 required
               />
             </div>
-
             <div>
               <label className="block text-gray-600 font-medium">
                 Student ID:
@@ -97,7 +104,6 @@ export default function CoverPageForm() {
                 required
               />
             </div>
-
             <div>
               <label className="block text-gray-600 font-medium">
                 Department:
@@ -115,7 +121,6 @@ export default function CoverPageForm() {
                 <option value="Business Administration">DBA</option>
               </select>
             </div>
-
             <div>
               <label className="block text-gray-600 font-medium">
                 Session:
@@ -130,13 +135,13 @@ export default function CoverPageForm() {
               />
             </div>
           </div>
-        </div>
+        </fieldset>
 
         {/* Course Information */}
-        <div className="mb-6">
-          <h3 className="text-lg underline md:text-xl font-semibold text-gray-700 mb-3">
+        <fieldset className="mb-6 border border-gray-300 p-4 rounded-md">
+          <legend className="text-lg md:text-xl font-semibold text-gray-700 px-2">
             Course Information
-          </h3>
+          </legend>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-600 font-medium">
@@ -151,7 +156,6 @@ export default function CoverPageForm() {
                 required
               />
             </div>
-
             <div>
               <label className="block text-gray-600 font-medium">
                 Course Code:
@@ -165,10 +169,9 @@ export default function CoverPageForm() {
                 required
               />
             </div>
-
             <div>
               <label className="block text-gray-600 font-medium">
-                Teacher Name:
+                Course Teacher:
               </label>
               <input
                 type="text"
@@ -179,10 +182,9 @@ export default function CoverPageForm() {
                 required
               />
             </div>
-
             <div>
               <label className="block text-gray-600 font-medium">
-                Teacher Designation:
+                Teacher's Designation:
               </label>
               <input
                 type="text"
@@ -193,7 +195,6 @@ export default function CoverPageForm() {
                 required
               />
             </div>
-
             <div>
               <label className="block text-gray-600 font-medium">
                 Teacher's Department:
@@ -207,7 +208,6 @@ export default function CoverPageForm() {
                 required
               />
             </div>
-
             <div>
               <label className="block text-gray-600 font-medium">
                 Teacher's University:
@@ -222,13 +222,13 @@ export default function CoverPageForm() {
               />
             </div>
           </div>
-        </div>
+        </fieldset>
 
         {/* Cover Page Information */}
-        <div className="mb-6">
-          <h3 className="text-lg underline md:text-xl font-semibold text-gray-700 mb-3">
+        <fieldset className="mb-6 border border-gray-300 p-4 rounded-md">
+          <legend className="text-lg md:text-xl font-semibold text-gray-700 px-2">
             Cover Page Information
-          </h3>
+          </legend>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-600 font-medium">
@@ -245,7 +245,6 @@ export default function CoverPageForm() {
                 <option value="Project">Project</option>
               </select>
             </div>
-
             <div>
               <label className="block text-gray-600 font-medium">
                 Serial Number:
@@ -259,7 +258,6 @@ export default function CoverPageForm() {
                 required
               />
             </div>
-
             <div className="md:col-span-2">
               <label className="block text-gray-600 font-medium">
                 Cover Page Title:
@@ -273,7 +271,6 @@ export default function CoverPageForm() {
                 required
               />
             </div>
-
             <div className="md:col-span-2">
               <label className="block text-gray-600 font-medium">
                 Date of Submission:
@@ -288,14 +285,18 @@ export default function CoverPageForm() {
               />
             </div>
           </div>
-        </div>
+        </fieldset>
 
         {/* Submit Button */}
         <button
           type="submit"
-          className="mt-6 bg-blue-500 text-white font-medium py-2 w-full rounded-md hover:bg-blue-600 transition duration-200 cursor-pointer"
+          className="mt-4 bg-blue-500 text-white font-medium py-2 w-full rounded-md hover:bg-blue-600 transition duration-200 cursor-pointer"
         >
-          {isClicked ? "Generating..." : "Generate PDF"}
+          {isClicked ? (
+            <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+          ) : (
+            "Generate PDF"
+          )}
         </button>
       </form>
     </div>
