@@ -21,18 +21,39 @@ export default function CoverPageForm() {
     submissionDate: "",
   });
 
-  // useEffect(() => {
-  //   const savedData = sessionStorage.getItem("formData");
-  //   if (savedData) setFormData(JSON.parse(savedData));
-  // }, []);
+  function clearForm() {
+    setFormData({
+      studentName: "",
+      studentID: "",
+      department: "Computer Science and Engineering",
+      session: "",
+      courseName: "",
+      courseCode: "",
+      teacherName: "",
+      teacherDesignation: "",
+      teacherDept: "",
+      teacherUni: "",
+      coverPageType: "Assignment",
+      serialNumber: "",
+      coverPageTitle: "",
+      submissionDate: "",
+    });
+    sessionStorage.clear();
+  }
+
+  useEffect(() => {
+    const savedData = sessionStorage.getItem("formData");
+    if (savedData) setFormData(JSON.parse(savedData));
+  }, []);
 
   const [isClicked, setIsClicked] = useState(false);
 
   const router = useRouter();
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    // sessionStorage.setItem("formData", JSON.stringify(formData));
+    const newData = { ...formData, [e.target.name]: e.target.value };
+    setFormData(newData);
+    sessionStorage.setItem("formData", JSON.stringify(newData));
   };
 
   const handleSubmit = (e) => {
@@ -63,9 +84,6 @@ export default function CoverPageForm() {
       router.push(
         `/download?studentName=${studentName}&studentID=${studentID}&department=${department}&session=${session}&courseName=${courseName}&courseCode=${courseCode}&teacherName=${teacherName}&teacherDesignation=${teacherDesignation}&coverPageType=${coverPageType}&serialNumber=${serialNumber}&coverPageTitle=${coverPageTitle}&submissionDate=${submissionDate}&teacherDept=${teacherDept}&teacherUni=${teacherUni}`
       );
-      setTimeout(() => {
-        setIsClicked(false);
-      }, 2000);
     }, 2000);
   };
 
@@ -287,17 +305,27 @@ export default function CoverPageForm() {
           </div>
         </fieldset>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="mt-4 bg-blue-500 text-white font-medium py-2 w-full rounded-md hover:bg-blue-600 transition duration-200 cursor-pointer"
-        >
-          {isClicked ? (
-            <i className="fa-solid fa-spinner fa-spin-pulse"></i>
-          ) : (
-            "Generate PDF"
-          )}
-        </button>
+        <div className=" flex gap-4 ">
+          {/* Reset Button */}
+          <button
+            type="reset"
+            onClick={clearForm}
+            className="mt-4 bg-gray-200 text-gray-600 font-medium py-2 w-full rounded-md hover:bg-gray-300 transition duration-200 cursor-pointer"
+          >
+            Clear
+          </button>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="mt-4 bg-blue-500 text-white font-medium py-2 w-full rounded-md hover:bg-blue-600 transition duration-200 cursor-pointer"
+          >
+            {isClicked ? (
+              <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+            ) : (
+              "Generate"
+            )}
+          </button>
+        </div>
       </form>
     </div>
   );
