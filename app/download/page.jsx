@@ -68,40 +68,40 @@ function PdfContent() {
   };
 
   return (
-    <div
-      style={{
-        paddingBlock: "50px",
-        overflow: "auto",
-      }}
-    >
+    <div className="py-12 overflow-auto">
       {/* Container with the form content */}
-      <div className="border-3  border-[gainsboro] mx-auto w-fit pb-[70px]">
+      <div
+        style={{
+          border: "3px solid gainsboro",
+          margin: "0 auto",
+          width: "fit-content",
+          paddingBottom: "70px",
+        }}
+      >
         <div
           ref={pdfContentRef}
-          className=" text-center"
           style={{
-            width: "8.27in",
             textAlign: "center",
-            paddingInline: "45px",
-            paddingTop: "70px",
-            margin: "auto",
+            width: "8.27in",
+            margin: "0 auto",
+            padding: "70px 45px 0",
           }}
         >
           <h2
-            className="text-3xl font-bold mb-4"
             style={{
-              fontSize: "1.8rem",
-              fontWeight: "700",
-              margin: "0",
+              fontSize: "22pt",
+              fontWeight: "bold",
+              marginBottom: "0.25rem",
+              margin: 0,
             }}
           >
             Chandpur Science and Technology University
           </h2>
           <h4
             style={{
-              fontSize: "1.3rem",
-              marginBottom: "16px",
-              marginTop: "0px",
+              fontSize: "16pt",
+              marginBottom: "1rem",
+              marginTop: 0,
               color: "#80807F",
             }}
           >
@@ -113,94 +113,95 @@ function PdfContent() {
             style={{ display: "block", margin: "0 auto", width: "20rem" }}
           />
           <p
-            className=""
             style={{
-              background: "whitesmoke",
+              backgroundColor: "whitesmoke",
               margin: "0 auto",
-              fontWeight: 550,
+              fontWeight: "600",
               width: "fit-content",
               padding: "0.5rem 1rem",
-              marginBlock: "1rem",
+              marginTop: "1rem",
               marginBottom: "1rem",
+              fontSize: "14pt",
             }}
           >
             {coverPageType} #{serialNumber}
           </p>
           <h3
-            className="text-xl font-semibold mb-4"
             style={{
-              fontSize: "1.2rem",
+              paddingLeft: "3rem",
+              paddingRight: "3rem",
               fontWeight: "600",
               marginBottom: "1rem",
-              paddingInline: "3rem",
+              fontSize: "14pt",
             }}
           >
             {coverPageTitle}
           </h3>
 
-          <p style={{ margin: 0, marginTop: "3rem" }}>
+          <p style={{ marginTop: "3rem", marginBottom: "0", fontSize: "14pt" }}>
             <strong>Course Name:</strong> {courseName}
           </p>
-          <p style={{ marginTop: "5px" }}>
+          <p style={{ marginTop: "0", fontSize: "14pt" }}>
             <strong>Course Code:</strong> {courseCode}
           </p>
 
           <div
-            className="flex justify-between mt-8 p-4 border"
             style={{
               display: "flex",
               justifyContent: "space-between",
-              marginTop: "4rem",
+              marginTop: "3rem",
               padding: "1rem",
               border: "2px solid gainsboro",
             }}
           >
             <div
-              className="w-1/2"
               style={{
                 width: "50%",
+                paddingRight: "1rem",
                 borderRight: "2px solid gainsboro",
-                paddingInline: "1rem",
               }}
             >
               <h4
-                className="font-semibold text-xl mb-2"
-                style={{ fontWeight: "600" }}
+                style={{
+                  fontWeight: "600",
+                  marginBottom: "0.5rem",
+                  fontSize: "16pt",
+                }}
               >
                 Submitted From
               </h4>
-              <p style={{ margin: 0 }}>
+              <p style={{ margin: 0, fontSize: "14pt" }}>
                 <strong>Name:</strong> {studentName}
               </p>
-              <p style={{ margin: 0 }}>
+              <p style={{ margin: 0, fontSize: "14pt" }}>
                 <strong>ID:</strong> {studentID}
               </p>
-              <p style={{ margin: 0 }}>
+              <p style={{ margin: 0, fontSize: "14pt" }}>
                 <strong>Session:</strong> {session}
               </p>
             </div>
 
-            <div
-              className="w-1/2"
-              style={{ width: "50%", paddingInline: "1rem" }}
-            >
+            <div style={{ width: "50%", paddingLeft: "1rem" }}>
               <h4
-                className="font-semibold text-xl mb-2"
-                style={{ fontWeight: "600" }}
+                style={{
+                  fontWeight: "600",
+                  marginBottom: "0.5rem",
+                  fontSize: "16pt",
+                }}
               >
                 Submitted To
               </h4>
-              <p style={{ margin: 0 }}>
+              <p style={{ margin: 0, fontSize: "14pt" }}>
                 <strong>Name:</strong> {teacherName}
               </p>
-              <p style={{ margin: 0 }}>
+              <p style={{ margin: 0, fontSize: "14pt" }}>
                 <strong>Designation:</strong> {teacherDesignation},
                 <br />
                 Dept. of {teacherDept}, {teacherUni}
               </p>
             </div>
           </div>
-          <p style={{ marginTop: "5rem" }}>
+          <p style={{ marginTop: "5rem", fontSize: "14pt" }}>
             <strong>Date of Submission:</strong> {submissionDate}
           </p>
         </div>
@@ -217,7 +218,7 @@ function PdfContent() {
       </div>
 
       {/***mobile view */}
-      <div className="md:hidden fixed top-32 left-4  bg-slate-300 p-10">
+      <div className="md:hidden fixed top-32 left-4 bg-slate-300 p-10">
         <p>Your Cover Page is Ready!</p>
         <p className="mb-4">For better view use desktop mode</p>
 
