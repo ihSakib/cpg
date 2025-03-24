@@ -108,9 +108,9 @@ function PdfContent() {
             Department of {department}
           </h4>
           <img
-            src="/logo.jpg"
+            src="/logo.png"
             alt="University Logo"
-            style={{ display: "block", margin: "0 auto", width: "20rem" }}
+            style={{ display: "block", margin: "3rem auto", width: "13rem" }}
           />
           <p
             style={{
