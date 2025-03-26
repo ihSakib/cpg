@@ -138,10 +138,17 @@ function PdfContent() {
             {coverPageTitle}
           </h3>
 
-          <p style={{ marginTop: "3rem", marginBottom: "0", fontSize: "14pt" }}>
+          <p
+            style={{
+              marginTop: "3rem",
+              marginBottom: "0",
+              fontSize: "14pt",
+              padding: "0 5rem",
+            }}
+          >
             <strong>Course Name:</strong> {courseName}
           </p>
-          <p style={{ marginTop: "0", fontSize: "14pt" }}>
+          <p style={{ marginTop: "0", fontSize: "14pt", padding: "0 10rem" }}>
             <strong>Course Code:</strong> {courseCode}
           </p>
 
