@@ -82,7 +82,33 @@ export default function CoverPageForm() {
     // Redirect to /pdf page and pass formData as URL params
     setTimeout(() => {
       router.push(
-        `/download?studentName=${studentName}&studentID=${studentID}&department=${department}&session=${session}&courseName=${courseName}&courseCode=${courseCode}&teacherName=${teacherName}&teacherDesignation=${teacherDesignation}&coverPageType=${coverPageType}&serialNumber=${serialNumber}&coverPageTitle=${coverPageTitle}&submissionDate=${submissionDate}&teacherDept=${teacherDept}&teacherUni=${teacherUni}`
+        `/download?studentName=${encodeURIComponent(
+          studentName
+        )}&studentID=${encodeURIComponent(
+          studentID
+        )}&department=${encodeURIComponent(
+          department
+        )}&session=${encodeURIComponent(
+          session
+        )}&courseName=${encodeURIComponent(
+          courseName
+        )}&courseCode=${encodeURIComponent(
+          courseCode
+        )}&teacherName=${encodeURIComponent(
+          teacherName
+        )}&teacherDesignation=${encodeURIComponent(
+          teacherDesignation
+        )}&coverPageType=${encodeURIComponent(
+          coverPageType
+        )}&serialNumber=${encodeURIComponent(
+          serialNumber
+        )}&coverPageTitle=${encodeURIComponent(
+          coverPageTitle
+        )}&submissionDate=${encodeURIComponent(
+          submissionDate
+        )}&teacherDept=${encodeURIComponent(
+          teacherDept
+        )}&teacherUni=${encodeURIComponent(teacherUni)}`
       );
     }, 2000);
   };

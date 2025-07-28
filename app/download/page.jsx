@@ -51,7 +51,6 @@ function PdfContent() {
       return;
     }
 
-    
     console.log("Generating PDF");
     const input = pdfContentRef.current;
     const cc = courseCode.split(" ").join("_");
