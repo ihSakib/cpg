@@ -132,7 +132,6 @@ export default function CoverPageForm() {
                 value={formData.studentName}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
             <div>
@@ -145,7 +144,6 @@ export default function CoverPageForm() {
                 value={formData.studentID}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
             <div>
@@ -175,7 +173,6 @@ export default function CoverPageForm() {
                 value={formData.session}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
           </div>
@@ -197,7 +194,6 @@ export default function CoverPageForm() {
                 value={formData.courseName}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
             <div>
@@ -210,7 +206,6 @@ export default function CoverPageForm() {
                 value={formData.courseCode}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
             <div>
@@ -223,7 +218,6 @@ export default function CoverPageForm() {
                 value={formData.teacherName}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
             <div>
@@ -236,7 +230,6 @@ export default function CoverPageForm() {
                 value={formData.teacherDesignation}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
             <div>
@@ -249,7 +242,6 @@ export default function CoverPageForm() {
                 value={formData.teacherDept}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
             <div>
@@ -262,7 +254,6 @@ export default function CoverPageForm() {
                 value={formData.teacherUni}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
           </div>
@@ -294,12 +285,11 @@ export default function CoverPageForm() {
                 Serial Number:
               </label>
               <input
-                type="number"
+                type="text"
                 name="serialNumber"
                 value={formData.serialNumber}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
             <div className="md:col-span-2">
@@ -312,7 +302,6 @@ export default function CoverPageForm() {
                 value={formData.coverPageTitle}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
             <div className="md:col-span-2">
@@ -325,7 +314,6 @@ export default function CoverPageForm() {
                 value={formData.submissionDate}
                 onChange={handleChange}
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                required
               />
             </div>
           </div>
