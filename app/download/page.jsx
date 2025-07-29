@@ -1,20 +1,13 @@
 "use client";
-import { Suspense, useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function PdfPage() {
-  return (
-    <Suspense fallback={<div className="p-10">Loading...</div>}>
-      <PdfContent />
-    </Suspense>
-  );
-}
-
-function PdfContent() {
+export default function PdfContent() {
   const searchParams = useSearchParams(); // Access query parameters
   const [html2pdf, setHtml2pdf] = useState(null);
 
   const formatDate = (dateString) => {
+    if (!dateString) return;
     const date = new Date(dateString);
     return new Intl.DateTimeFormat("en-GB").format(date);
   };
