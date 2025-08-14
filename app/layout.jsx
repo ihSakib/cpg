@@ -154,11 +154,7 @@ export default function RootLayout({ children }) {
         <main className="container mx-auto p-4">{children}</main>
         <footer className="mt-auto">
           <div className=" bg-white text-neutral-600 p-4 border-t border-neutral-100  text-center mt-20 md:mt-32">
-            &copy; {new Date().getFullYear()}{" "}
-            <a className="text-neutral-700" href="https://github.com/ihSakib">
-              ihSakib
-            </a>
-            . All rights reserved.
+            &copy; {new Date().getFullYear()}. All rights reserved.
           </div>
         </footer>
         <Analytics />
