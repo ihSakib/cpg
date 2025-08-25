@@ -7,7 +7,7 @@ export default function PdfContent() {
   const [html2pdf, setHtml2pdf] = useState(null);
 
   const formatDate = (dateString) => {
-    if (!dateString) return;
+    if (!dateString) return null;
     const date = new Date(dateString);
     return new Intl.DateTimeFormat("en-GB").format(date);
   };
