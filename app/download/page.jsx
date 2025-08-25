@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function PdfContent() {
+function PdfContent() {
   const searchParams = useSearchParams(); // Access query parameters
   const [html2pdf, setHtml2pdf] = useState(null);
 
@@ -232,5 +232,13 @@ export default function PdfContent() {
         </button>
       </div>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PdfContent />
+    </Suspense>
   );
 }
