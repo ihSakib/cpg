@@ -6,6 +6,10 @@ function PdfContent() {
   const searchParams = useSearchParams(); // Access query parameters
   const [html2pdf, setHtml2pdf] = useState(null);
 
+  const [customLogo, setCustomLogo] = useState(null);
+
+  useEffect(() => {}, []);
+
   const formatDate = (dateString) => {
     if (!dateString) return null;
     const date = new Date(dateString);
@@ -14,6 +18,7 @@ function PdfContent() {
 
   // Destructure form data from the searchParams
   const studentName = searchParams.get("studentName");
+  const logo = searchParams.get("logo");
   const studentID = searchParams.get("studentID");
   const department = searchParams.get("department");
   const session = searchParams.get("session");
@@ -32,6 +37,9 @@ function PdfContent() {
     import("html2pdf.js").then((module) => {
       setHtml2pdf(() => module.default);
     });
+
+    const savedLogo = sessionStorage.getItem("customLogo");
+    setCustomLogo(savedLogo);
   }, []);
 
   // Reference for the container to be converted to PDF
@@ -101,7 +109,7 @@ function PdfContent() {
             Department of {department}
           </h4>
           <img
-            src="/logo.png"
+            src={logo == "CSTU" ? "./logo.png" : customLogo}
             alt="University Logo"
             style={{ display: "block", margin: "3rem auto", width: "13rem" }}
           />

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function CoverPageForm() {
   const [formData, setFormData] = useState({
+    logo: "CSTU",
     studentName: "",
     studentID: "",
     department: "Computer Science and Engineering",
@@ -23,6 +24,7 @@ export default function CoverPageForm() {
 
   function clearForm() {
     setFormData({
+      logo: null,
       studentName: "",
       studentID: "",
       department: "Computer Science and Engineering",
@@ -56,13 +58,34 @@ export default function CoverPageForm() {
     sessionStorage.setItem("formData", JSON.stringify(newData));
   };
 
-  const handleSubmit = (e) => {
+  const handleCustomLogo = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // 1. Check file size
+    const maxSizeMB = 10; // safe for sessionStorage
+    if (file.size > maxSizeMB * 1024 * 1024) {
+      alert(`File too big! Max allowed is ${maxSizeMB} MB.`);
+      return;
+    }
+
+    // 2. Convert file → Base64 string
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64DataUrl = reader.result;
+      sessionStorage.setItem("customLogo", base64DataUrl);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setIsClicked(true);
 
     // Generate a dynamic URL based on form data
     const {
+      logo,
       studentName,
       studentID,
       department,
@@ -81,41 +104,81 @@ export default function CoverPageForm() {
 
     // Redirect to /pdf page and pass formData as URL params
     setTimeout(() => {
-      router.push(
-        `/download?studentName=${encodeURIComponent(
-          studentName
-        )}&studentID=${encodeURIComponent(
-          studentID
-        )}&department=${encodeURIComponent(
-          department
-        )}&session=${encodeURIComponent(
-          session
-        )}&courseName=${encodeURIComponent(
-          courseName
-        )}&courseCode=${encodeURIComponent(
-          courseCode
-        )}&teacherName=${encodeURIComponent(
-          teacherName
-        )}&teacherDesignation=${encodeURIComponent(
-          teacherDesignation
-        )}&coverPageType=${encodeURIComponent(
-          coverPageType
-        )}&serialNumber=${encodeURIComponent(
-          serialNumber
-        )}&coverPageTitle=${encodeURIComponent(
-          coverPageTitle
-        )}&submissionDate=${encodeURIComponent(
-          submissionDate
-        )}&teacherDept=${encodeURIComponent(
-          teacherDept
-        )}&teacherUni=${encodeURIComponent(teacherUni)}`
-      );
-    }, 2000);
+      const params = new URLSearchParams({
+        logo: formData.logo,
+        studentName: formData.studentName,
+        studentID: formData.studentID,
+        department: formData.department,
+        session: formData.session,
+        courseName: formData.courseName,
+        courseCode: formData.courseCode,
+        teacherName: formData.teacherName,
+        teacherDesignation: formData.teacherDesignation,
+        coverPageType: formData.coverPageType,
+        serialNumber: formData.serialNumber,
+        coverPageTitle: formData.coverPageTitle,
+        submissionDate: formData.submissionDate,
+        teacherDept: formData.teacherDept,
+        teacherUni: formData.teacherUni,
+      });
+
+      router.push(`/download?${params.toString()}`);
+    }, 1000);
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen px-6">
       <form onSubmit={handleSubmit} className="bg-white w-full max-w-2xl">
+        {/* Logo Selection */}
+        <fieldset className="mb-6 mt-4 md:mt-6 border border-gray-300 p-4 rounded-md">
+          <legend className="text-lg md:text-xl font-semibold text-gray-700 px-2">
+            Logo Selection
+          </legend>
+
+          <div className="flex gap-6 items-center">
+            <label className="flex items-center gap-2 text-gray-700">
+              <input
+                type="radio"
+                name="logo"
+                value="CSTU"
+                checked={formData.logo === "CSTU"}
+                onChange={handleChange}
+                className="text-blue-500 focus:ring-blue-400"
+              />
+              CSTU
+            </label>
+
+            <label className="flex items-center gap-2 text-gray-700">
+              <input
+                type="radio"
+                name="logo"
+                value="Others"
+                checked={formData.logo === "Others"}
+                onChange={handleChange}
+                className="text-blue-500 focus:ring-blue-400"
+              />
+              Others
+            </label>
+          </div>
+
+          {/* Upload field appears only if "Others" is selected */}
+          {formData.logo === "Others" && (
+            <div className="mt-4">
+              <input
+                type="file"
+                name="customLogo"
+                accept="image/*"
+                onChange={handleCustomLogo}
+                className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              />
+              <p className="text-sm text-gray-700 mt-2">
+                For the best results, please upload a square logo image (1:1
+                aspect ratio).
+              </p>
+            </div>
+          )}
+        </fieldset>
+
         {/* Student Information */}
         <fieldset className="mb-6 mt-4 md:mt-6 border border-gray-300 p-4 rounded-md">
           <legend className="text-lg md:text-xl font-semibold text-gray-700 px-2">
