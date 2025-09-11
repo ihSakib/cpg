@@ -17,8 +17,10 @@ function PdfContent() {
   };
 
   // Destructure form data from the searchParams
+  const uni = searchParams.get("uni");
+  const uni_name = searchParams.get("uni_name");
+  const other_dept = searchParams.get("other_dept");
   const studentName = searchParams.get("studentName");
-  const logo = searchParams.get("logo");
   const studentID = searchParams.get("studentID");
   const department = searchParams.get("department");
   const session = searchParams.get("session");
@@ -96,7 +98,9 @@ function PdfContent() {
               margin: 0,
             }}
           >
-            Chandpur Science and Technology University
+            {uni == "CSTU"
+              ? "Chandpur Science and Technology University"
+              : uni_name}
           </h2>
           <h4
             style={{
@@ -106,10 +110,10 @@ function PdfContent() {
               color: "#80807F",
             }}
           >
-            Department of {department}
+            Department of {department == "Others" ? other_dept : department}
           </h4>
           <img
-            src={logo == "CSTU" ? "./logo.png" : customLogo}
+            src={uni == "CSTU" ? "./logo.png" : customLogo}
             alt="University Logo"
             style={{ display: "block", margin: "3rem auto", width: "13rem" }}
           />

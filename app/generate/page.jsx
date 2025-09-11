@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 
 export default function CoverPageForm() {
   const [formData, setFormData] = useState({
-    logo: "CSTU",
+    uni: "CSTU",
+    uni_name: "",
+    other_dept: "",
     studentName: "",
     studentID: "",
     department: "Computer Science and Engineering",
@@ -22,12 +24,41 @@ export default function CoverPageForm() {
     submissionDate: "",
   });
 
-  function clearForm() {
-    setFormData({
-      logo: null,
+  const [customLogo, setCustomLogo] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
+  const router = useRouter();
+
+  // Load saved form & logo
+  useEffect(() => {
+    try {
+      const savedData = sessionStorage.getItem("formData");
+      if (savedData) setFormData(JSON.parse(savedData));
+
+      const savedLogo = sessionStorage.getItem("customLogo");
+      if (savedLogo) setCustomLogo(savedLogo);
+    } catch (err) {
+      console.error("Error loading from sessionStorage:", err);
+      sessionStorage.removeItem("formData");
+      sessionStorage.removeItem("customLogo");
+    }
+  }, []);
+
+  // Update field value
+  const handleChange = (e) => {
+    const newData = { ...formData, [e.target.name]: e.target.value };
+    setFormData(newData);
+    sessionStorage.setItem("formData", JSON.stringify(newData));
+  };
+
+  // Clear form but keep some defaults
+  const clearForm = () => {
+    const clearedData = {
+      uni: formData.uni,
+      uni_name: formData.uni_name,
+      other_dept: formData.other_dept,
       studentName: "",
       studentID: "",
-      department: "Computer Science and Engineering",
+      department: formData.department,
       session: "",
       courseName: "",
       courseCode: "",
@@ -35,93 +66,43 @@ export default function CoverPageForm() {
       teacherDesignation: "",
       teacherDept: "",
       teacherUni: "",
-      coverPageType: "Assignment",
+      coverPageType: formData.coverPageType,
       serialNumber: "",
       coverPageTitle: "",
       submissionDate: "",
-    });
-    sessionStorage.clear();
-  }
+    };
 
-  useEffect(() => {
-    const savedData = sessionStorage.getItem("formData");
-    if (savedData) setFormData(JSON.parse(savedData));
-  }, []);
-
-  const [isClicked, setIsClicked] = useState(false);
-
-  const router = useRouter();
-
-  const handleChange = (e) => {
-    const newData = { ...formData, [e.target.name]: e.target.value };
-    setFormData(newData);
-    sessionStorage.setItem("formData", JSON.stringify(newData));
+    setFormData(clearedData);
+    sessionStorage.setItem("formData", JSON.stringify(clearedData));
   };
 
+  // Handle custom logo upload
   const handleCustomLogo = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // 1. Check file size
-    const maxSizeMB = 10; // safe for sessionStorage
+    const maxSizeMB = 10;
     if (file.size > maxSizeMB * 1024 * 1024) {
       alert(`File too big! Max allowed is ${maxSizeMB} MB.`);
       return;
     }
 
-    // 2. Convert file → Base64 string
     const reader = new FileReader();
     reader.onload = () => {
       const base64DataUrl = reader.result;
+      setCustomLogo(base64DataUrl);
       sessionStorage.setItem("customLogo", base64DataUrl);
     };
     reader.readAsDataURL(file);
   };
 
-  const handleSubmit = async (e) => {
+  // Submit form → redirect
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     setIsClicked(true);
 
-    // Generate a dynamic URL based on form data
-    const {
-      logo,
-      studentName,
-      studentID,
-      department,
-      session,
-      courseName,
-      courseCode,
-      teacherName,
-      teacherDesignation,
-      teacherDept,
-      teacherUni,
-      coverPageType,
-      serialNumber,
-      coverPageTitle,
-      submissionDate,
-    } = formData;
-
-    // Redirect to /pdf page and pass formData as URL params
     setTimeout(() => {
-      const params = new URLSearchParams({
-        logo: formData.logo,
-        studentName: formData.studentName,
-        studentID: formData.studentID,
-        department: formData.department,
-        session: formData.session,
-        courseName: formData.courseName,
-        courseCode: formData.courseCode,
-        teacherName: formData.teacherName,
-        teacherDesignation: formData.teacherDesignation,
-        coverPageType: formData.coverPageType,
-        serialNumber: formData.serialNumber,
-        coverPageTitle: formData.coverPageTitle,
-        submissionDate: formData.submissionDate,
-        teacherDept: formData.teacherDept,
-        teacherUni: formData.teacherUni,
-      });
-
+      const params = new URLSearchParams(formData);
       router.push(`/download?${params.toString()}`);
     }, 1000);
   };
@@ -129,19 +110,19 @@ export default function CoverPageForm() {
   return (
     <div className="flex items-center justify-center min-h-screen px-6">
       <form onSubmit={handleSubmit} className="bg-white w-full max-w-2xl">
-        {/* Logo Selection */}
+        {/* University Info */}
         <fieldset className="mb-6 mt-4 md:mt-6 border border-gray-300 p-4 rounded-md">
           <legend className="text-lg md:text-xl font-semibold text-gray-700 px-2">
-            Logo Selection
+            University Info
           </legend>
 
           <div className="flex gap-6 items-center">
             <label className="flex items-center gap-2 text-gray-700">
               <input
                 type="radio"
-                name="logo"
+                name="uni"
                 value="CSTU"
-                checked={formData.logo === "CSTU"}
+                checked={formData.uni === "CSTU"}
                 onChange={handleChange}
                 className="text-blue-500 focus:ring-blue-400"
               />
@@ -151,9 +132,9 @@ export default function CoverPageForm() {
             <label className="flex items-center gap-2 text-gray-700">
               <input
                 type="radio"
-                name="logo"
+                name="uni"
                 value="Others"
-                checked={formData.logo === "Others"}
+                checked={formData.uni === "Others"}
                 onChange={handleChange}
                 className="text-blue-500 focus:ring-blue-400"
               />
@@ -161,8 +142,22 @@ export default function CoverPageForm() {
             </label>
           </div>
 
+          {/*others uni name */}
+          {formData.uni === "Others" && (
+            <div className="mt-4">
+              <input
+                type="text"
+                name="uni_name"
+                value={formData.uni_name}
+                onChange={handleChange}
+                placeholder="University name"
+                className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              />
+            </div>
+          )}
+
           {/* Upload field appears only if "Others" is selected */}
-          {formData.logo === "Others" && (
+          {formData.uni === "Others" && (
             <div className="mt-4">
               <input
                 type="file"
@@ -224,7 +219,22 @@ export default function CoverPageForm() {
                   ICT
                 </option>
                 <option value="Business Administration">DBA</option>
+                <option value="Others">Others</option>
               </select>
+
+              {/* custom dept */}
+              {formData.department === "Others" && (
+                <div className="mt-4">
+                  <input
+                    type="text"
+                    name="other_dept"
+                    value={formData.other_dept}
+                    onChange={handleChange}
+                    placeholder="Department"
+                    className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  />
+                </div>
+              )}
             </div>
             <div>
               <label className="block text-gray-600 font-medium">
@@ -385,7 +395,7 @@ export default function CoverPageForm() {
         <div className=" flex gap-4 ">
           {/* Reset Button */}
           <button
-            type="reset"
+          type="button"
             onClick={clearForm}
             className="mt-4 bg-gray-200 text-gray-600 font-medium py-2 w-full rounded-md hover:bg-gray-300 transition duration-200 cursor-pointer"
           >
