@@ -31,15 +31,15 @@ export default function CoverPageForm() {
   // Load saved form & logo
   useEffect(() => {
     try {
-      const savedData = sessionStorage.getItem("formData");
+      const savedData = localStorage.getItem("formData");
       if (savedData) setFormData(JSON.parse(savedData));
 
-      const savedLogo = sessionStorage.getItem("customLogo");
+      const savedLogo = localStorage.getItem("customLogo");
       if (savedLogo) setCustomLogo(savedLogo);
     } catch (err) {
       console.error("Error loading from sessionStorage:", err);
-      sessionStorage.removeItem("formData");
-      sessionStorage.removeItem("customLogo");
+      localStorage.removeItem("formData");
+      localStorage.removeItem("customLogo");
     }
   }, []);
 
@@ -47,7 +47,7 @@ export default function CoverPageForm() {
   const handleChange = (e) => {
     const newData = { ...formData, [e.target.name]: e.target.value };
     setFormData(newData);
-    sessionStorage.setItem("formData", JSON.stringify(newData));
+    localStorage.setItem("formData", JSON.stringify(newData));
   };
 
   // Clear form but keep some defaults
@@ -56,10 +56,10 @@ export default function CoverPageForm() {
       uni: formData.uni,
       uni_name: formData.uni_name,
       other_dept: formData.other_dept,
-      studentName: "",
-      studentID: "",
+      studentName: formData.studentName,
+      studentID: formData.studentID,
       department: formData.department,
-      session: "",
+      session: formData.session,
       courseName: "",
       courseCode: "",
       teacherName: "",
@@ -73,7 +73,8 @@ export default function CoverPageForm() {
     };
 
     setFormData(clearedData);
-    sessionStorage.setItem("formData", JSON.stringify(clearedData));
+    //  sessionStorage.setItem("formData", JSON.stringify(clearedData));
+    localStorage.setItem("formData", JSON.stringify(clearedData));
   };
 
   // Handle custom logo upload
@@ -91,7 +92,7 @@ export default function CoverPageForm() {
     reader.onload = () => {
       const base64DataUrl = reader.result;
       setCustomLogo(base64DataUrl);
-      sessionStorage.setItem("customLogo", base64DataUrl);
+      localStorage.setItem("customLogo", base64DataUrl);
     };
     reader.readAsDataURL(file);
   };

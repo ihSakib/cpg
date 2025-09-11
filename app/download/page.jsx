@@ -40,7 +40,7 @@ function PdfContent() {
       setHtml2pdf(() => module.default);
     });
 
-    const savedLogo = sessionStorage.getItem("customLogo");
+    const savedLogo = localStorage.getItem("customLogo");
     setCustomLogo(savedLogo);
   }, []);
 
