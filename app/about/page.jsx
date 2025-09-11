@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Page = () => {
   return (
-    <div className="flex flex-col items-center px-6 mt-6">
+    <div className="flex flex-col items-center px-2 mt-6">
       {/* About Page Content */}
       <section className="text-center max-w-2xl">
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
@@ -36,28 +36,24 @@ const Page = () => {
           </div>
 
           {/* Profile Details */}
-          <div className="mt-4 md:mt-0 w-[70%] md:ml-10 text-center md:text-left flex flex-col justify-center ">
+          <div className="mt-4 md:mt-0  md:w-[70%] md:ml-10 text-center md:text-left flex flex-col justify-center ">
             <h2 className="text-xl font-semibold">Iftekhar Hossain</h2>
             <p className="text-sm sm:text-base text-gray-600 mb-2">
               Developer of CPG | Student at CSTU
             </p>
-            <p className="text-xs sm:text-sm  text-gray-500 mb-4">
-              He is a web development learner with a strong passion for
-              full-stack development. He has intermediate knowledge of React and
-              Next.js, enabling him to build dynamic, high-performance web
-              applications. Iftekhar is proficient in Tailwind CSS, using it to
-              create responsive and visually appealing designs. Additionally, he
-              has basic knowledge of PHP, MySQL, and Node.js, which allows him
-              to work on the backend of web applications. He is committed to
-              improving his skills and creating efficient, user-friendly
-              solutions for various projects.
+            <p className="text-sm  text-gray-500 mb-4">
+              He is a web development learner passionate about full-stack
+              development. With intermediate knowledge of React, Next.js, and
+              Tailwind CSS, he builds responsive and dynamic web apps. He also
+              has basic skills in PHP, MySQL, and Node.js, and is dedicated to
+              improving his craft and creating user-friendly solutions.
             </p>
             <div className="flex flex-col gap-2">
               <a
                 href="mailto:ihsakib.dev@gmail.com"
                 className="text-blue-600 hover:underline text-sm"
               >
-                ✉️ ihsakib.dev@gmail.com
+                ✉️ contact@ihsakib.dev
               </a>
               <a
                 href="https://linkedin.com/in/ihsakib"

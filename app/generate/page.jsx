@@ -167,8 +167,13 @@ export default function CoverPageForm() {
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
               />
               <p className="text-sm text-gray-700 mt-2">
-                For the best results, please upload a square logo image (1:1
-                aspect ratio).
+                <span className="text-base font-bold text-red-500">*</span> For
+                the best results, please upload a square logo image (1:1 aspect
+                ratio).
+              </p>
+              <p className="text-sm text-gray-700 ">
+                <span className="text-base font-bold text-red-500">*</span> Once
+                uploaded, the logo stays until you close the tab.
               </p>
             </div>
           )}
@@ -395,7 +400,7 @@ export default function CoverPageForm() {
         <div className=" flex gap-4 ">
           {/* Reset Button */}
           <button
-          type="button"
+            type="button"
             onClick={clearForm}
             className="mt-4 bg-gray-200 text-gray-600 font-medium py-2 w-full rounded-md hover:bg-gray-300 transition duration-200 cursor-pointer"
           >
