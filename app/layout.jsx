@@ -47,15 +47,19 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         />
-        <script>
-          (function(s)
-          {
-            ((s.dataset.zone = "9861038"),
-            (s.src = "https://forfrogadiertor.com/tag.min.js"))
-          }
-          )([document.documentElement,
-          document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
-        </script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(s){
+                s.dataset.zone = '9861038';
+                s.src = 'https://forfrogadiertor.com/tag.min.js';
+              })([document.documentElement, document.body]
+                .filter(Boolean)
+                .pop()
+                .appendChild(document.createElement('script')));
+            `,
+          }}
+        />
       </head>
       <body className="flex flex-col min-h-svh">
         <header className="bg-white border-b border-neutral-200">
