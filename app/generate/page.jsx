@@ -108,7 +108,7 @@ export default function CoverPageForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-6">
+    <div className="flex items-center justify-center min-h-screen px-2">
       <form onSubmit={handleSubmit} className="bg-white w-full max-w-2xl">
         {/* University Info */}
         <fieldset className="mb-6 mt-4 md:mt-6 border border-gray-300 p-4 rounded-md">
