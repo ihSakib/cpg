@@ -1,20 +1,24 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import Script from "next/script";
+import Head from "next/head";
 
 const Page = () => {
   return (
     <div>
-      <script>
-        (function(s)
-        {
-          ((s.dataset.zone = "9861038"),
-          (s.src = "https://forfrogadiertor.com/tag.min.js"))
-        }
-        )([document.documentElement,
-        document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
-      </script>
+      <Head>
+        {/* ✅ PropellerAds script in head (homepage only) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(s){
+                s.dataset.zone = '9861038';
+                s.src = 'https://forfrogadiertor.com/tag.min.js';
+              })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+            `,
+          }}
+        />
+      </Head>
       {/** Home Page Content */}
       <section className="text-center  mt-10 px-6">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
