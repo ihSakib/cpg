@@ -37,11 +37,11 @@ const Page = () => {
 
           {/* Profile Details */}
           <div className="mt-4 md:mt-0  md:w-[70%] md:ml-10 text-center md:text-left flex flex-col justify-center ">
-            <h2 className="text-xl font-semibold">Iftekhar Hossain</h2>
+            <h2 className="text-2xl font-semibold">Iftekhar Hossain</h2>
             <p className="text-sm sm:text-base text-gray-600 mb-2">
               Developer of CPG | Student at CSTU
             </p>
-            <p className="text-sm  text-gray-500 mb-4">
+            <p className="text-gray-500 mb-4">
               He is a web development learner passionate about full-stack
               development. With intermediate knowledge of React, Next.js, and
               Tailwind CSS, he builds responsive and dynamic web apps. He also
