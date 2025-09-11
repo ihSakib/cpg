@@ -47,7 +47,6 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         />
-       
       </head>
       <body className="flex flex-col min-h-svh">
         <header className="bg-white border-b border-neutral-200">

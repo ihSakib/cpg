@@ -8,15 +8,19 @@ const Page = () => {
     <div>
       <Head>
         {/* ✅ PropellerAds script in head (homepage only) */}
-        <script>
-          (function(s)
-          {
-            ((s.dataset.zone = "9861038"),
-            (s.src = "https://forfrogadiertor.com/tag.min.js"))
-          }
-          )([document.documentElement,
-          document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
-        </script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(s){
+                s.dataset.zone = '9861038';
+                s.src = 'https://forfrogadiertor.com/tag.min.js';
+              })([document.documentElement, document.body]
+                .filter(Boolean)
+                .pop()
+                .appendChild(document.createElement('script')));
+            `,
+          }}
+        />
       </Head>
       {/** Home Page Content */}
       <section className="text-center  mt-10 px-6">
