@@ -114,7 +114,7 @@ export default function CoverPageForm() {
         {/* University Info */}
         <fieldset className="mb-6 mt-4 md:mt-6 border border-gray-300 p-4 rounded-md">
           <legend className="text-lg md:text-xl font-semibold text-gray-700 px-2">
-            University Info
+            University Information
           </legend>
 
           <div className="flex gap-6 items-center">
@@ -168,13 +168,14 @@ export default function CoverPageForm() {
                 className="border border-gray-300 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
               />
               <p className="text-sm text-gray-700 mt-2">
+                <p className="text-sm text-gray-700 ">
+                  <span className="text-base font-bold text-red-500">*</span>{" "}
+                  Upload your logo once, and it will remain saved until the
+                  browser is uninstalled!
+                </p>
                 <span className="text-base font-bold text-red-500">*</span> For
                 the best results, please upload a square logo image (1:1 aspect
                 ratio).
-              </p>
-              <p className="text-sm text-gray-700 ">
-                <span className="text-base font-bold text-red-500">*</span> Once
-                uploaded, the logo stays until you close the tab.
               </p>
             </div>
           )}
