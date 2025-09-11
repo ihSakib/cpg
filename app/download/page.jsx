@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
+
 function PdfContent() {
   const searchParams = useSearchParams(); // Access query parameters
   const [html2pdf, setHtml2pdf] = useState(null);
