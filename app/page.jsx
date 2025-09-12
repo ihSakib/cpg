@@ -25,23 +25,23 @@ const Page = () => {
     document.getElementById("ad-container-1")?.appendChild(script2);
 
     // Banner 2 (728x90)
-    const script3 = document.createElement("script");
-    script3.type = "text/javascript";
-    script3.innerHTML = `
-      atOptions = {
-        'key' : '564bf5d76a43f05a086416924fdd52c4',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    `;
-    const script4 = document.createElement("script");
-    script4.type = "text/javascript";
-    script4.src =
-      "//www.highperformanceformat.com/564bf5d76a43f05a086416924fdd52c4/invoke.js";
-    document.getElementById("ad-container-2")?.appendChild(script3);
-    document.getElementById("ad-container-2")?.appendChild(script4);
+    // const script3 = document.createElement("script");
+    // script3.type = "text/javascript";
+    // script3.innerHTML = `
+    //   atOptions = {
+    //     'key' : '564bf5d76a43f05a086416924fdd52c4',
+    //     'format' : 'iframe',
+    //     'height' : 90,
+    //     'width' : 728,
+    //     'params' : {}
+    //   };
+    // `;
+    // const script4 = document.createElement("script");
+    // script4.type = "text/javascript";
+    // script4.src =
+    //   "//www.highperformanceformat.com/564bf5d76a43f05a086416924fdd52c4/invoke.js";
+    // document.getElementById("ad-container-2")?.appendChild(script3);
+    // document.getElementById("ad-container-2")?.appendChild(script4);
   }, []);
   return (
     <div>
@@ -62,13 +62,13 @@ const Page = () => {
           Generate Now
         </Link>
       </section>
-      <div
+      {/* <div
         className="hidden md:block mt-20"
         id="ad-container-2"
         style={{ maxWidth: "728px", height: "90px" }}
-      ></div>
+      ></div> */}
       <div
-        className="md:hidden mt-15"
+        className=" mt-15"
         id="ad-container-1"
         style={{ maxWidth: "160px", height: "300px" }}
       ></div>
