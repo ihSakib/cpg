@@ -1,8 +1,34 @@
 "use client";
 import Link from "next/link";
 import React from "react";
+import { useEffect } from "react";
 
 const Page = () => {
+
+    useEffect(() => {
+    const script1 = document.createElement("script");
+    script1.type = "text/javascript";
+    script1.innerHTML = `
+      atOptions = {
+        'key' : '0ef600ddea8ec6bb1ceaa8788f6587f0',
+        'format' : 'iframe',
+        'height' : 300,
+        'width' : 160,
+        'params' : {}
+      };
+    `;
+
+    const script2 = document.createElement("script");
+    script2.type = "text/javascript";
+    script2.src = "//www.highperformanceformat.com/0ef600ddea8ec6bb1ceaa8788f6587f0/invoke.js";
+
+    // append scripts in order
+    document.getElementById("ad-container")?.appendChild(script1);
+    document.getElementById("ad-container")?.appendChild(script2);
+
+   
+  }, []);
+
   return (
     <div>
       {/** Home Page Content */}
@@ -22,22 +48,8 @@ const Page = () => {
           Generate Now
         </Link>
       </section>
-      <section className="text-center  mt-10 px-6">
-        <script type="text/javascript">
-          atOptions ={" "}
-          {{
-            key: "0bbb3fbde89246b99b524878d1e38619",
-            format: "iframe",
-            height: 60,
-            width: 468,
-            params: {},
-          }}
-          ;
-        </script>
-        <script
-          type="text/javascript"
-          src="//www.highperformanceformat.com/0bbb3fbde89246b99b524878d1e38619/invoke.js"
-        ></script>
+      <section id="ad-container" className="text-center  mt-10 px-6">
+       
       </section>
     </div>
   );
