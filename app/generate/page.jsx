@@ -30,16 +30,6 @@ export default function CoverPageForm() {
 
   // Load saved form & logo
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "//pl27625115.revenuecpmgate.com/f7/39/b0/f739b0ecb12c429c61fb084c0c232f1c.js";
-    script.type = "text/javascript";
-
-    const container = document.getElementById("ad-container");
-    if (container) {
-      container.appendChild(script);
-    }
-
     try {
       const savedData = localStorage.getItem("formData");
       if (savedData) setFormData(JSON.parse(savedData));
@@ -119,7 +109,7 @@ export default function CoverPageForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-2">
+    <div className="flex flex-col items-center justify-center min-h-screen px-2">
       <form onSubmit={handleSubmit} className="bg-white w-full max-w-2xl">
         {/* University Info */}
         <fieldset className="mb-6 mt-4 md:mt-6 border border-gray-300 p-4 rounded-md">
@@ -431,7 +421,14 @@ export default function CoverPageForm() {
           </button>
         </div>
       </form>
-      <section className="mt-20" id="ad-container"></section>
+      <section className="mt-50" id="ad-container">
+        <script
+          async="async"
+          data-cfasync="false"
+          src="//pl27625217.revenuecpmgate.com/abc3d295d423f9a1638f67e2a7606b6f/invoke.js"
+        ></script>
+        <div id="container-abc3d295d423f9a1638f67e2a7606b6f"></div>
+      </section>
     </div>
   );
 }
