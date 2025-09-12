@@ -23,20 +23,21 @@ const Page = () => {
         </Link>
       </section>
       <section className="text-center  mt-10 px-6">
+        <script type="text/javascript">
+          atOptions ={" "}
+          {{
+            key: "0bbb3fbde89246b99b524878d1e38619",
+            format: "iframe",
+            height: 60,
+            width: 468,
+            params: {},
+          }}
+          ;
+        </script>
         <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8877901653899194"
-          crossorigin="anonymous"
+          type="text/javascript"
+          src="//www.highperformanceformat.com/0bbb3fbde89246b99b524878d1e38619/invoke.js"
         ></script>
-        <ins
-          class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-8877901653899194"
-          data-ad-slot="4257262329"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </section>
     </div>
   );
