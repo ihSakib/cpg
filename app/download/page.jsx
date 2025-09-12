@@ -2,14 +2,47 @@
 import { useEffect, useState, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-
 function PdfContent() {
   const searchParams = useSearchParams(); // Access query parameters
   const [html2pdf, setHtml2pdf] = useState(null);
 
   const [customLogo, setCustomLogo] = useState(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    // Create the config script
+    const configScript = document.createElement("script");
+    configScript.type = "text/javascript";
+    configScript.innerHTML = `
+      atOptions = {
+        key: "7a8b01464b1258d6d537f6caec74a7c2",
+        format: "iframe",
+        height: 50,
+        width: 320,
+        params: {}
+      };
+    `;
+
+    // Create the invoke script
+    const invokeScript = document.createElement("script");
+    invokeScript.type = "text/javascript";
+    invokeScript.src =
+      "//www.highperformanceformat.com/7a8b01464b1258d6d537f6caec74a7c2/invoke.js";
+    invokeScript.async = true;
+
+    // Append both into container
+    const container = document.getElementById("banner-ad-container");
+    if (container) {
+      container.appendChild(configScript);
+      container.appendChild(invokeScript);
+    }
+
+    // Cleanup
+    return () => {
+      if (container) {
+        container.innerHTML = "";
+      }
+    };
+  }, []);
 
   const formatDate = (dateString) => {
     if (!dateString) return null;
@@ -219,7 +252,6 @@ function PdfContent() {
           </p>
         </div>
       </div>
-
       <div className="hidden md:block fixed top-32 right-32">
         <button
           onClick={generatePDF}
@@ -229,7 +261,6 @@ function PdfContent() {
           Download
         </button>
       </div>
-
       {/***mobile view */}
       <div className="md:hidden fixed top-32 left-4 bg-slate-300 p-10">
         <p>Your Cover Page is Ready!</p>
@@ -244,6 +275,8 @@ function PdfContent() {
           Download
         </button>
       </div>
+
+      <section className="mt-20" id="banner-ad-container"></section>
     </div>
   );
 }
