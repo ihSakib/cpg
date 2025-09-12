@@ -4,29 +4,26 @@ import React from "react";
 import { useEffect } from "react";
 
 const Page = () => {
-
-    useEffect(() => {
+  useEffect(() => {
     const script1 = document.createElement("script");
     script1.type = "text/javascript";
     script1.innerHTML = `
-      atOptions = {
-        'key' : '0ef600ddea8ec6bb1ceaa8788f6587f0',
-        'format' : 'iframe',
-        'height' : 300,
-        'width' : 160,
-        'params' : {}
-      };
-    `;
+    atOptions = {
+      'key' : '564bf5d76a43f05a086416924fdd52c4',
+      'format' : 'iframe',
+      'height' : 90,
+      'width' : 728,
+      'params' : {}
+    };
+  `;
 
     const script2 = document.createElement("script");
     script2.type = "text/javascript";
-    script2.src = "//www.highperformanceformat.com/0ef600ddea8ec6bb1ceaa8788f6587f0/invoke.js";
+    script2.src =
+      "//www.highperformanceformat.com/564bf5d76a43f05a086416924fdd52c4/invoke.js";
 
-    // append scripts in order
     document.getElementById("ad-container")?.appendChild(script1);
     document.getElementById("ad-container")?.appendChild(script2);
-
-   
   }, []);
 
   return (
@@ -48,9 +45,7 @@ const Page = () => {
           Generate Now
         </Link>
       </section>
-      <section id="ad-container" className="text-center  mt-10 px-6">
-       
-      </section>
+      <section id="ad-container" className="text-center  mt-10 px-6"></section>
     </div>
   );
 };
