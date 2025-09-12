@@ -72,6 +72,14 @@ const Page = () => {
         id="ad-container-1"
         style={{ maxWidth: "160px", height: "300px" }}
       ></div>
+      <section className="mt-50" id="ad-container">
+        <script
+          async="async"
+          data-cfasync="false"
+          src="//pl27625217.revenuecpmgate.com/abc3d295d423f9a1638f67e2a7606b6f/invoke.js"
+        ></script>
+        <div id="container-abc3d295d423f9a1638f67e2a7606b6f"></div>
+      </section>
     </div>
   );
 };
