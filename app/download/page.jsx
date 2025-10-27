@@ -8,42 +8,6 @@ function PdfContent() {
 
   const [customLogo, setCustomLogo] = useState(null);
 
-  useEffect(() => {
-    // Create the config script
-    const configScript = document.createElement("script");
-    configScript.type = "text/javascript";
-    configScript.innerHTML = `
-      atOptions = {
-        key: "7a8b01464b1258d6d537f6caec74a7c2",
-        format: "iframe",
-        height: 50,
-        width: 320,
-        params: {}
-      };
-    `;
-
-    // Create the invoke script
-    const invokeScript = document.createElement("script");
-    invokeScript.type = "text/javascript";
-    invokeScript.src =
-      "//www.highperformanceformat.com/7a8b01464b1258d6d537f6caec74a7c2/invoke.js";
-    invokeScript.async = true;
-
-    // Append both into container
-    const container = document.getElementById("banner-ad-container");
-    if (container) {
-      container.appendChild(configScript);
-      container.appendChild(invokeScript);
-    }
-
-    // Cleanup
-    return () => {
-      if (container) {
-        container.innerHTML = "";
-      }
-    };
-  }, []);
-
   const formatDate = (dateString) => {
     if (!dateString) return null;
     const date = new Date(dateString);
@@ -90,12 +54,13 @@ function PdfContent() {
 
     console.log("Generating PDF");
     const input = pdfContentRef.current;
-    const cc = courseCode.split(" ").join("_");
+    const cc =
+      courseCode.split(" ").join("_") + `_${coverPageType}_${serialNumber}`;
     const randomCode = Math.floor(1000 + Math.random() * 9000);
 
     var opt = {
       margin: 0,
-      filename: "CP_" + cc + "_" + randomCode,
+      filename: cc + "_" + randomCode,
       image: { type: "jpeg", quality: 1 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: "mm", format: "A4", orientation: "portrait" },
@@ -275,8 +240,6 @@ function PdfContent() {
           Download
         </button>
       </div>
-
-      <section className="mt-20" id="banner-ad-container"></section>
     </div>
   );
 }

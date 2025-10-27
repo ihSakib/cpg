@@ -105,7 +105,7 @@ export default function CoverPageForm() {
     setTimeout(() => {
       const params = new URLSearchParams(formData);
       router.push(`/download?${params.toString()}`);
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -421,18 +421,6 @@ export default function CoverPageForm() {
           </button>
         </div>
       </form>
-      <section className="mt-50" id="ad-container">
-        <script
-          async="async"
-          data-cfasync="false"
-          src="//pl27625217.revenuecpmgate.com/abc3d295d423f9a1638f67e2a7606b6f/invoke.js"
-        ></script>
-        <div id="container-abc3d295d423f9a1638f67e2a7606b6f"></div>
-      </section>
-      {/* <script
-        type="text/javascript"
-        src="//toysinevitablenat.com/f7/39/b0/f739b0ecb12c429c61fb084c0c232f1c.js"
-      ></script> */}
     </div>
   );
 }
